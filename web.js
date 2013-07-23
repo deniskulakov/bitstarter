@@ -7,7 +7,10 @@ var app = express.createServer(express.logger());
 app.get('/', function(request, response) {
     var content = fs.readFileSync("index.html");
     response.send(content.toString());
-});
+})
+
+app.use("/css",express.static(__dirname +  '/css'));
+app.use("/img",express.static(__dirname +  '/img'));
 
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
